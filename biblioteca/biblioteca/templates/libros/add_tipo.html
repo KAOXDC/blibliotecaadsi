@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Agregar Tipo De Usuario 
+
+{% endblock %}
+
+{% block content %}
+	<h1>Agregar Usuario</h1>
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input class="btn btn-success" type="submit" value="Guardar">
+		<input class="btn btn-danger" type="reset" value="Limpiar">
+	</form>
+	<br>
+
+	{{ info }}
+{% endblock %}

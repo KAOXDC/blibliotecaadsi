@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Libro
+{% endblock %}
+
+{% block content %}
+
+		
+
+		<p><b> Nombre Libro: </b>{{ libro.nombre_libro }}</p>
+		<p> <b> Autor: </b>{{ libro.autor }} </p>
+		<p><b>Categoria: </b>
+
+		{% for c in libro.categoria.all %} 
+			
+				{{ c }}
+
+		{% endfor %}
+		</p>
+
+		<p> <b>Editorial: </b>{{ libro.editorial }} </p>
+		<p> <b>Paginas: </b>{{ libro.paginas }} </p>
+		<p> <b>Version: </b>{{ libro.version }}</p>
+		<p> <b>Tomo: </b> {{ libro.tomo }} </p>
+		<p> <b>Codigo: </b> {{ libro.codigo }} </p>
+		<p> <b>Estado: </b> {{ libro.estado }} </p>
+		
+		<p> <b>Fecha de adquisicion: </b>{{ libro.fecha_adquisicion }} </p>
+		<p> <b>Fecha de publicacion: </b>{{ libro.fecha_publicacion }} </p>
+		<p> <b>Disponibilidad:   </b> {{ libro.disponibilidad }} </p> 
+
+
+		{% if libro.disponibilidad = True %}  <!-- SI LIBRO ESTA EN "TRUE", permite el prestamo del libro, sino... -->
+
+			<td> <a class ="btn btn-inverse" href="/add/prestamo/{{ libro.id }}"> Prestar </a></p> </td>
+
+		{% else %}
+			<h2> El libro No esta disponible </h2>
+		{% endif %}
+		
+
+{% endblock %}

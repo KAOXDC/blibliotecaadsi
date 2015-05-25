@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de  Bibliotecarios
+{% endblock %}
+
+{% block content %}
+    <h1>Lista de Bibliotecarios</h1>
+    <a class="btn btn-info" href="{% url 'vista_agregar_bibliotecario' %}"> <li class= "icon-plus"></li> Agregar Bibliotecario</a>
+	{% if user.is_authenticated %}
+
+		
+		
+		
+	{% endif %}
+
+   
+
+	{% if bibliotecarios %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Bibliotecarios</th>
+			</tr>
+		</theader>			
+		{% for p in bibliotecarios %}
+			<tbody>
+				<tr>
+					<td>{{ p.nombre }}</td>
+					{% if user.is_authenticated %}
+
+					<td>
+							<a class = "btn btn-info" href="/bibliotecario/{{ p.id }}"> <li class= "icon-search"></li> Ver </a>
+					</td>
+					<td>
+
+					</td>
+
+				    <td>
+							<a class = "btn btn-warning" href="/edit/bibliotecario/{{ p.id }}"> <li class= "icon-pencil"></li>  Editar </a>
+					</td>
+					<td>
+							<a class = "btn btn-danger" href="/del/bibliotecario/{{ p.id }}">  Eliminar </a>
+					</td>
+
+					{% endif %}
+
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	<a class = "btn btn-inverse" href="/add/categoria/{{ p.id }}"></li>  Regresar A El Menu Principal </a>
+	{% else %}
+		<h2>No existen Bibliotecarios  :( </h2>
+
+	{% endif %}
+
+
+{% endblock %}

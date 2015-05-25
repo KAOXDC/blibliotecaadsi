@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	reportes
+{% endblock %}
+
+	{% block content %}
+	<head>
+	  <script>
+	  $(function() {
+	    $( "#datepicker1 , #datepicker").datepicker({
+	      changeMonth: true,
+	      changeYear: true,
+	      yearRange: "1900:2015",
+	      dateFormat: 'dd/mm/yy',
+	      gotoCurrent: true,
+	      // You can put more options here.
+
+	    });
+	  });
+	  </script>
+
+	  
+	<h3><font face="Comic Sans MS" color="black" ><center>Reportes de Busqueda</center></font></h3>
+	{% if info_enviado %}
+	    <div align="center" class ="alert alert-info">
+	      <p>Para generar el reporte Correctamente diligencie los campos a continuacion y presione la opcion Generar reporte</p>
+	    </div>
+	  	<form action="." method="POST" align="center">
+			{% csrf_token %}                                               
+			{{ form.as_p }}
+			<input type="submit" value="Generar Reporte" class = "btn btn-success"/>
+			
+		</form>
+	
+	{% endif %}
+	 <br>
+	 
+		
+	{% if busqueda %}
+    
+      <table class="table table-hover alert alert-info table-condensed">
+        <header>
+          <tr>
+            <th>Busqueda</th>
+            <th>Fecha</th>
+            <th>Resultado</th>
+
+          </tr>
+        </header>
+      {% for pre in busqueda  %}
+        <body align="justify">
+          <tr>
+            <td>{{ pre.busqueda }}</td>
+            <td>{{ pre.fecha }}</td>
+            <td>{% if pre.resultado = True %}
+            		No se encontro la busqueda
+            	{% else %}
+            		Se encontro la busqueda
+            	{% endif %}
+
+             </td>
+
+            {% if user.is_authenticated %}
+              <td>
+                <a class="btn btn-info" href="/prestamo/{{pre.id}}"><li class="icon-search"></li> </a>
+              </td>
+            {% endif %}
+          </tr>
+        </body> 
+      {% endfor %}
+      </table>
+    
+
+   
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	usuarios
+{% endblock %}
+
+{% block content %}
+
+		<div class="alert alert-warning ">
+			<p><b>Nombre de Usuario: </b>   {{usuario.user.username}}</p>
+			<p><b>Correo Electronico: </b>    {{usuario.user.email}}</p>
+		</div>
+		<br>
+		<div class="alert alert-warning ">
+			<h4>Usuario:</h4>
+			<br>
+			<p><b>Nombre: </b> {{ usuario.nombre }}</p>
+			<p> <b>Apellidos: </b>{{ usuario.apellidos }}</p>
+			<p> <b>Identificacion: </b>{{ usuario.identificacion }}</p>
+			<p> <b>Tipo_id: </b>{{ usuario.tipo_id }}</p>
+			<p> <b>Ciudad: </b>{{ usuario.ciudad}}</p>
+			<p> <b>Fecha_nac: </b>{{ usuario.fecha_nac }}</p>
+			<p> <b>Telefono: </b>{{ usuario.telefono }}</p>
+			<p> <b>Direccion: </b>{{ usuario.direccion }}</p>
+
+			<p> <b>Genero: </b>{{ usuario.genero}}</p>
+			<p> <b>Tipo_usuario: </b>{{ usuario.tipo_usuario}}</p>
+		</div>
+		<a  class="btn btn-primary" href="/usuarios/">Mostrar lista de Usuarios</a>
+		
+{% endblock %}	
+
+
+

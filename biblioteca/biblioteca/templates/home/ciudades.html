@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de  Ciudades
+{% endblock %}
+
+{% block content %}
+    <h1>Lista de Ciudades</h1>
+    <a class="btn btn-info" href="{% url 'vista_agregar_ciudad' %}"> <li class= "icon-plus"></li> Agregar Ciudad</a>
+	{% if user.is_authenticated %}
+		
+	{% endif %}
+
+   
+
+	{% if ciudades %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Ciudades</th>
+			</tr>
+		</theader>			
+		{% for p in ciudades %}
+			<tbody>
+				<tr>
+					<td>{{ p.nombre }}</td>
+						{% if user.is_authenticated %}
+
+					<td>
+							<p><a class = "btn btn-info" href="/ciudad/{{ p.id }}"> Ver </a></p>
+					</td>
+				    <td>
+							<a class = "btn btn-warning" href="/edit/ciudad/{{ p.id }}">  Editar </a>
+					</td>
+					<td>	<a class = "btn btn-danger" href="/del/ciudad/{{ p.id }}">  Eliminar </a>
+					</td>
+					
+						{% endif %}
+
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	<a class = "btn btn-inverse" href="/add/categoria/{{ p.id }}"></li>  Regresar A El Menu Principal </a>
+			
+	{% else %}
+		<h2>No existen ciudades :( </h2>
+	{% endif %}
+
+{% endblock %}

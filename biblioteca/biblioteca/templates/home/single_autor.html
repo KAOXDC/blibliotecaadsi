@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Bibliotecas
+{% endblock %}
+{% block content %}
+<a class="btn btn-primary" href="/autores/">Mostrar Lista De Autores </a>
+	<h1> <b>Autor</b> </h1>
+	<p> <b>Nombre de autor:</b>{{ autor.nombre }}</p>
+{%endblock%}

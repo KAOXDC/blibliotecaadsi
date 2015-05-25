@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista Editoriales
+{% endblock %}
+
+{% block content %}
+	<h1> Lista de Editoriales</h1>
+	<a class ="btn btn-info" href="{% url 'vista_agregar_editorial' %}"> <li class= "icon-plus"></li> Agregar Editorial</a>
+
+	<br>
+	{% if editoriales %}
+	<table class="table table-hover">
+		<theader>
+			<tr>
+				<th> Editorial  </th>
+			</tr>
+		</theader>
+
+		{% for e in editoriales %}
+			<tbody>
+				<tr>
+					<td><p>{{ e.nombre }}</td>
+					<td><a class="btn btn-info" href="/editorial/{{e.id}}"> <li class = "icon-search"></li> Ver </a></td>
+					<td><a class="btn btn-warning" href="/edit/editorial/{{e.id}}"><li class = "icon-pencil"></li> Editar</a></td>
+					<td><a class="btn btn-danger" href="/eliminar/editorial/{{e.id}}"> Eliminar </a></td>
+				</tr>
+			</tbody>
+		{% endfor %}
+		
+
+	</table>
+	
+	
+	{% else %}
+		<h2> No Existen Editoriales </h2>
+	{% endif %}
+	<a class = "btn btn-inverse" href="/principal/{{ p.id }}"></li>  Regresar A El Menu Principal </a>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+	Editar libro
+{% endblock %}
+{% block content %}
+	<a href="/edit/categoria/{{p.id}}">Editar categoria</a>
+	<form action="." method ="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Guardar">
+		<input type="submit" value="Limpiar">
+	</form>
+	<a href="/categorias/">Mostrar la lista de Categorias</a>
+	
+	{{ info }}
+{% endblock %}  

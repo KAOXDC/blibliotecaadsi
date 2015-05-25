@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<title> Editar Tipo De Usuario </title>
+{% endblock %}
+
+{% block content %}
+	<h1>Editar Usuario</h1>
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input class="btn btn-success" type="submit" value="Guardar Cambios">
+		<input class="btn btn-danger" type="reset" value="Limpiar">
+	</form>
+	<br>
+
+	{{ info }}
+
+{% endblock %}
+
+
+

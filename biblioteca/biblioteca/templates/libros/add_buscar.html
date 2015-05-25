@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Busqueda
+{% endblock %}
+
+{% block content %}
+	<form action="." method="POST" align="center">
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" value ="Buscar"/>
+	</form>
+	{{mensaje}}
+
+	{% if libro or autor or editorial or categoria %}
+		<h2>Se encontro su busqueda: "{{busqueda}}"</h2>
+	{%else %}
+		</h1>No se encuentra</h1>
+	{% endif %}
+
+	{% if libro  %}
+			<table  class = "table table-hover ">
+				<tbody>
+					<tr>
+						<tr>
+							{% for l in libro %}
+								<theader>
+										<tr>
+											<th><h2> Nombre Del Libro</h2> </th>	
+										</tr>
+										<tr>
+											<th> Nombre </th>
+											<th> Disponibilidad </th>
+										</tr>
+								</theader> 
+
+								<td>{{l.nombre_libro}}</td>
+								<td>{{l.disponibilidad}}</td>
+							{% endfor %}
+						</tr>
+					</tr>
+				</tbody>
+			</table>
+	
+	{% endif %}
+
+							<!--Para autor -->
+	{% if autor  %}
+			<table  class = "table table-hover ">
+				<tbody>
+					<tr>
+						<tr>
+							<theader>
+	 									<tr>
+											<th><h2> Autor</h2> </th>	
+										</tr>
+										<tr>
+											<th> Nombre </th>	
+										</tr>
+							</theader>
+							{% for a in autor %}
+							<tr> 
+								
+								<td>{{a.nombre_libro}}</td>
+							{% endfor %}
+							</tr>
+						</tr>
+					</tr>
+				</tbody>
+			</table>
+	
+	{% endif %}
+							<!--Para categorias -->
+			
+	{% if categoria  %}
+			<table  class = "table table-hover ">
+				<tbody>
+					<tr>
+						<tr>
+							<theader>
+	 									<tr>
+											<th><h2> Categorias</h2> </th>	
+										</tr>
+										<tr>
+											<th> Nombre </th>	
+										</tr>
+							</theader>
+							{% for c in categoria %} 
+							<tr>
+								<td>{{c.nombre}}</td>
+							</tr>	
+							{% endfor %}
+						</tr>
+					</tr>
+				</tbody>
+			</table>
+	
+	{% endif %}
+								<!--Para editoriales -->
+
+	{% if editorial  %}		
+			<table  class = "table table-hover ">
+				<tbody>
+					<tr>
+						<tr>
+							<theader>
+	 									<tr>
+											<th><h2> Editoriales</h2> </th>	
+										</tr>
+										<tr>
+											<th> Nombre </th>	
+											<th> Version </th>
+										</tr>
+							</theader>
+							{% for e in editorial %} 
+							<tr>
+								<td>{{e.nombre_libro}}</td>
+								<td>{{e.version}}</td>
+								<td><li><a  class="btn btn-primary" href="#"> Reservar Libro </a></li></td>
+							</tr>	
+							{% endfor %}
+						</tr>
+					</tr>
+				</tbody>
+			</table>
+	
+	{% endif %}
+
+							<!--Para codigo -->
+	{% if codigo  %}		
+			<table  class = "table table-hover ">
+				<tbody>
+					<tr>
+						<tr>
+							<theader>
+	 									<tr>
+											<th><h2> Codigo</h2> </th>	
+										</tr>
+										<tr>
+											<th> Nombre </th>	
+										</tr>
+							</theader>
+							<tr>
+								<td>{{codigo}}</td>
+							</tr>	
+						</tr>	
+
+					</tr>
+				</tbody>
+
+			</table>
+
+					<!--<a class = "btn btn-info" href="/libro/{{p.id}}"><li class="icon-search"></li> Ver </a>-->
+					
+						
+	
+	
+	
+	{% endif %}
+
+	
+	
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+																														

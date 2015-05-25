@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Bibliotecas
+{% endblock %}
+{% block content %}
+
+<a class="btn btn-primary" href="/bibliotecas/">Montrasr Lista De Bibliotecas</a>
+	<h1>{{ biblioteca.nombre }}</h1>
+	<br>
+	<p><b>Nombre: </b> {{ biblioteca.nombre }}</p>
+	<p><b>Direccion: </b>{{ biblioteca.direccion }}</p>
+	<p><b>Telefono: </b>{{ biblioteca.telefono }}</p>
+	<p><b>Correo: </b>{{ biblioteca.correo }}</p>
+	<p><b>Reglamento: </b>{{ biblioteca.reglamento }}</p>
+{%endblock%}

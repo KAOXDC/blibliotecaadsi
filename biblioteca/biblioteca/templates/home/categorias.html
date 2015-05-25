@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de Categorias
+{% endblock %}
+{% block content %}
+	<h1>Lista de Categorias</h1>
+	<a class = "btn btn-info" href="/add/categoria/{{ p.id }}"> <li class= "icon-plus"></li> Agregar Categoria </a>
+	{% if categorias %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>nombre</th>
+			</tr>
+		</theader>
+		
+		{% for p in categorias %}
+			<tbody>
+				<tr>
+					<td><h4>{{p.nombre }}</h4>    </td>
+					<td><p><a class  = "btn btn-info" href="/categoria/{{ p.id}}"> Ver </a></td>
+										 
+			        <td><a class = "btn btn-warning" href="/edit/categoria/{{ p.id }}"> <li class= "icon-pencil"></li> Editar </a></td>
+			        <td><a class = "btn btn-danger" href="/eliminar/categoria/{{ p.id }}"></li> Eliminar </a></td>
+			                          	  </p>
+			    </tr>
+			</tbody>
+
+		{% endfor %}
+	</table>
+			
+			 <br>
+			<a class = "btn btn-inverse" href="/add/categoria/{{ p.id }}"></li>  Regresar A El Menu Principal </a>
+			
+	{% else %}
+		<h2>No existen categorias :( </h2>
+	{% endif %}
+{% endblock %}

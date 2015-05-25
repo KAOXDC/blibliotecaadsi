@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de Usuarios
+{% endblock %}
+
+{% block content %}
+	<h1>Lista de Usuarios</h1>
+	{% if user.is_authenticated %}
+		<a class="btn btn-primary" href="{% url 'vista_registro' %}">Agregar un Nuevo Usuario</a>
+	{% endif %}
+
+	{% if usuarios %} 
+		<table class = "table table-hover">
+		
+			<theader>
+				<th>Usuario</th>
+				<th>Tipo de Usuario</th>
+				<th>Ciudad</th>
+			</theader>
+
+		{% for p in usuarios %}
+			<tbody>
+				<tr>
+					<td>{{ p.nombre }}     {{ p.apellidos}} </td>
+					<td>{{ p.tipo_usuario}} </td>
+					<td>{{ p.ciudad }}</td>
+					<td><a class="btn btn-info" href="/usuario/{{p.id}}" > Ver </a ></td>
+					{% if user.is_authenticated %}
+					<td><a class="btn btn-warning" href="/edit/usuario/{{ p.id }}">  Editar</a></td>  
+					
+
+					<td>
+
+					<!-- Button to trigger modal -->
+					<a href="#myModal" role="button"  data-toggle="modal" class = "btn btn-danger">Eliminar</a>
+
+					<!-- Modal -->
+					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						
+						</div>
+						<div class="modal-body">
+							<p>Esta seguro que desea eliminar el usuario  {{ p.identificacion }} con nombre {{ p.nombre }}   </p>
+						</div>
+						<div class="modal-footer">
+							<a class="btn" data-dismiss="modal" aria-hidden="true" href = "/usuarios/{{p.id}}">Cancelar</a>
+							<a class = "btn btn-danger" href = "/del/usuario/{{p.id}}">Eliminar </a>
+						</div>
+					</div>
+
+
+
+					</td>
+
+
+					{% endif %}
+				</tr>
+			</tbody>
+		{% endfor %}
+		</table>
+	{% else %}
+		<h2> No Existen Usuarios :(</h2>
+	{% endif %}
+{% endblock %} 

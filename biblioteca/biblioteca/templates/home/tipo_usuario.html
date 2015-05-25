@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista  De Usuarios 
+{% endblock %}
+
+{% block content %}
+	<h1>Tipos De Usuarios</h1>
+
+
+	<a <a class="btn btn-info"  href="/add/tipo-usuario/{{ t.id }}"> <li class="icon-plus"></li>Agregar Tipo de Usuario</a>
+
+	<br>
+	{% if tipos_usuarios %}
+	<table class= "table table-hover" >
+		<theader>
+			<tr>
+				<th>Tipos De Usuario</th>
+			</tr>
+		</theader>
+	
+		{% for t in tipos_usuarios %}
+		
+		
+			<tbody>
+				<tr>
+
+					<td><p>{{ t.nombre }}</td>
+					<td><a class="btn btn-info" href="/tipo_usuario/{{t.id}}"> <li class= "icon-search"></li> Ver </a></td>
+					<td><a class="btn btn-warning" href="/edit/tipo-usuario/{{ t.id }}"> <li class= "icon-pencil"></li> Editar</a></td>
+					<td><a class="btn btn-danger" href="/eliminar/tipo-usuario/{{ t.id }}"> Eliminar </a></td>
+					
+		
+				</tr>
+			</tbody>
+		{% endfor %}
+	 
+
+	</table>
+	<a class ="btn btn-inverse" href="{% url 'vista_principal' %}"> Regresar al menu Principal</a>
+
+		
+
+	{% else %}
+		<h2>No Existen Tipos De Usuarios :(</h2>
+
+	{% endif %}
+{% endblock %}

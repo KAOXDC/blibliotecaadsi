@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de Autores
+{% endblock %}
+{% block content %}
+	<h1> Lista de Autores </h1> 
+	<a <a class="btn btn-info"  href="/add/autor/"> <li class= "icon-plus"></li> Agregar Autor </a>
+	<br>
+	{% if autores %}
+	<table class="table table-hover">
+
+		
+
+
+		
+		{% for t in autores %}
+			
+
+				<tbody>
+					<tr>
+						<td><p>{{ t.nombre}}</td></p>
+						<td><a class ="btn btn-info" href="/autor/{{ t.id }}">  <li class= "icon-search"></li> Ver</a></td>
+						
+						
+						<td><a class ="btn btn-warning" href="/edit/autor/{{ t.id }}"> <li class= "icon-pencil"></li> Editar  </a></td>
+						
+						
+						<td><a class ="btn btn-danger" href="/eliminar/autor/{{ t.id }}"></li> Eliminar </a></p></td>
+					</tr>
+				</tbody>
+			{% endfor %}
+			</table> 
+		
+			<tr>
+			<td><a class ="btn btn-inverse" href="{% url 'vista_principal' %}"> Regresar al menu Principal</a></td>
+			</tr>
+		
+
+{% else %}
+		<h2> No existen prestamos....</h2>
+	{% endif %}
+{% endblock %}

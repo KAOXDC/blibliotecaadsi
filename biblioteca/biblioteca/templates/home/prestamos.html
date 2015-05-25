@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de Prestamos
+{% endblock %} 
+{% block content %}
+
+
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2015",
+      dateFormat: 'dd/mm/yy',
+      // You can put more options here.
+
+    });
+  });
+  </script>
+
+	<h1> Lista de Prestamos</h1>
+	<!-- <a <a class="btn btn-inverse"  href="/add/prestamo/">  Agregar Prestamo  </a> -->
+	{% if prestamos %}
+	<table class="table table-hover">
+			<tr>
+				<td> <b> <u> Libro </td> <td> <b> <u> Fecha Prestamo </td> <td> <b> <u> Fecha Devolucion </td> <td> <b> <u> Estado del Prestamo </td>
+			</tr>
+	
+		{% for t in prestamos %}
+			<tbody>
+				
+				<tr>		
+					<td> <p> <b> {{t.libro}} </td> 
+					<td> <p> <b> {{t.fecha_prestamo}} </p></td> 
+					<td> <p> <b> {{t.fecha_devolucion}} </p></td>
+
+					{% if pres.estado_prestamo = efectuado %} <!-- SI LIBRO ESTA EN "TRUE", permite el prestamo del libro, sino... -->
+					<td> <a class ="btn btn-info" href="/prestamo/{{ t.id }}">Ver</a></td>
+					<td> <a class ="btn btn-warning" href="/edit/prestamo/{{ t.id }}">  Editar  </a> </td>
+					<td> <a class ="btn btn-danger" href="/eliminar/prestamo/{{ t.id }}"></li> Eliminar </a> </td> 
+
+					{%else%}
+						<td> <a class ="btn btn-success" href="/prestar/{{ t.id }}">  <b> Prestar </td>
+						
+					
+				</tr>
+			</tbody>
+					{% endif %}
+				{% endfor %}
+
+	</table>
+				<a class ="btn btn-inverse" href="{% url 'vista_principal' %}"> Regresar al menu Principal</a>
+
+		{% else %}
+		<h2> No existen prestamos....</h2>
+		{% endif %}
+{% endblock %}

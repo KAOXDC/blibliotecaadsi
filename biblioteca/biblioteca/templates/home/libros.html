@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de  Libros
+{% endblock %}
+
+{% block content %}
+	<h1> Lista de libros</h1>
+	<a <a class="btn btn-info"  href= "/add/libros/{{p.id}}"> <li class= "icon-plus"></li> Agregar libro</a> 
+	{% if libros %}
+		<table class="table table-hover">
+			{% for p in libros %}
+			<tbody>
+				<tr>
+					<td> <p>{{p.nombre_libro}} </td>
+					<td> <a class ="btn btn-info" href="/libro/{{p.id}}"> <li class= "icon-search"></li> Ver </a> </td>
+					<td> <a class ="btn btn-warning" href= "/edit/libro/{{p.id}}"> <li class= "icon-pencil"></li> Editar </a> </td>
+					<td> <a class ="btn btn-danger" href="/del/libro/{{ p.id }}"> Eliminar </a></p> </td>
+
+					
+
+					 <!--<td> <a class ="btn btn-link" href="/add/prestamo/"> Prestar </a></p> </td> -->
+
+
+
+				</tr>
+			</tbody>
+			{% endfor %}
+		</table>
+		<a class ="btn btn-inverse" href="{% url 'vista_principal' %}"> Regresar al menu Principal</a>
+	{% else %}
+		<h2> No hay libros registrados </h2>
+	{% endif %}
+{% endblock %}

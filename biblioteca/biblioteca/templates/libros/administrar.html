@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	administrador
+{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-success">
+	<h3>Bienvenidos esta es la pagina Principal del administrador</h3>
+</div>
+
+
+
+<div class="bs-docs-example">
+            <ul id="myTab" class="nav nav-tabs">
+            	<li class="active"><a href="#libros" data-toggle="tab">Libros</a></li>
+		        <li class=""><a href="#usuarios" data-toggle="tab">Usuarios</a></li>
+			 	<li class=""><a href="#bibliotecarios" data-toggle="tab">Bibliotecario</a></li>
+			  	<li class=""><a href="#prestamos" data-toggle="tab">Prestamos</a></li>
+			  	<li class=""><a href="#consultas" data-toggle="tab">Consultas</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="libros">
+                <p>
+                	<p> <i class="icon-tasks  icon-black"> </i><a  href="{% url 'vista_editoriales'%}"> Editoriales </a></p>
+			
+					<p><i class=" icon-user icon-black"></i> <a  href="{% url 'vista_autores'%}"> Autores </a></p>
+
+					<p><i class="icon-list-alt icon-black"> </i><a  href="{% url 'vista_categorias'%}"> Categorias </a></p>
+
+					<p><i class=" icon-book icon-black"></i> <a  href="{% url 'vista_libros'%}"> Libros </a></p>
+                </p>
+              </div>
+              <div class="tab-pane fade" id="usuarios">
+                
+                	<p><i class="icon-user icon-black"></i> <a href="{% url 'vista_tipos_usuarios' %}">Tipo de Usuarios</a></p>
+		
+					<p><i class="icon-road icon-black"></i> <a href="{% url 'vista_ciudades' %}">Ciudades</a></p>
+					
+					<p><i class=" icon-user icon-black"></i> <a href="{% url 'vista_usuarios' %}">Usuarios</a></p>
+                
+              </div>
+              <div class="tab-pane fade" id="bibliotecarios">
+                <p>
+                	<i class="icon-user icon-black"></i><a  href="{% url 'vista_bibliotecarios'%}"> Bibliotecario </a></p>
+					<p><i class="icon-home icon-black"></i><a  href="{% url 'vista_bibliotecas'%}"> Bibliotecas </a>
+                </p>
+               </div>
+              <div class="tab-pane fade" id="prestamos">
+                <p>
+                	<i class="icon-share icon-black"></i><a  href="{% url 'vista_prestamos'%}"> Prestamos </a>
+                </p>
+               </div>
+               <div class="tab-pane fade" id="consultas">
+               	 	<p>
+                	<i class="icon-search icon-black"></i> <a href="{% url 'vista_consultar_usuario_id' %}">Consultar usuario</a>
+                	</p>		
+              </div>
+            </div>
+          </div>
+
+{% endblock %} 
+
